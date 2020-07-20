@@ -1,0 +1,14 @@
+@import 'scss/mixins';
+
+*,
+html,
+body {
+  @include set-to-zero;
+  @include font-roboto;
+  box-sizing: border-box;
+}
+
+.app {
+  max-width: 1850px;
+  margin: 0 auto;
+}

@@ -1,0 +1,70 @@
+@import './src/scss/mixins';
+
+.app-header {
+  padding: 2px;
+}
+
+.app-title {
+  @include font-popins;
+  padding: 32px 0;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 36px;
+  vertical-align: center;
+
+  span {
+    @include font-roboto;
+    font-weight: normal;
+  }
+}
+
+.header-search {
+  display: block;
+  background-image: url('../../img/backgroundImg.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 8px;
+  height: 138px;
+  border: 1px solid transparent;
+}
+
+.input-wrapper {
+  margin: 42px auto;
+  width: 75%;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+  border-radius: 4px;
+  height: 55px;
+  line-height: 53px;
+  padding: 0 5px;
+  position: relative;
+
+}
+
+.search-button {
+  vertical-align: middle;
+  display: inline-block;
+  height: 45px;
+  color: white;
+  background: #1e86ff;
+  border-radius: 4px;
+  width: 20%;
+  cursor: pointer;
+}
+
+.search-input {
+  display: inline-block;
+  vertical-align: middle;
+  width: 78%;
+}
+
+.icon {
+  color: #b9bdcf;
+  display: inline-block;
+  width: 2%;
+  text-align: center;
+  font-family: 'Material Icons';
+  vertical-align: middle;
+}
