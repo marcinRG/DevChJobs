@@ -12,5 +12,8 @@ ReactDOM.render(
             <Search></Search>
             <Results></Results>
         </div>
+        <footer className="footer">
+            &copy; 2020 Anonymous
+        </footer>
     </React.Fragment>,
     document.getElementById('App'));
