@@ -1,0 +1,82 @@
+@import './src/scss/mixins';
+
+.job-offer-short {
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .05);
+  border-radius: 4px;
+  margin: 32px auto;
+  width: 100%;
+  padding: 12px;
+  position: relative;
+}
+
+.img {
+  width: 90px;
+  height: 90px;
+  background-color: #1e86ff;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.description {
+  display: inline-block;
+  padding-left: 16px;
+  vertical-align: top;
+}
+
+.company-name {
+  @include font-roboto;
+  letter-spacing: 1px;
+  padding: 4px 0;
+  display: inline-block;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  color: #334680;
+}
+
+.job-title {
+  @include font-roboto;
+  font-style: normal;
+  font-weight: normal;
+  padding: 4px 0;
+  display: block;
+  font-size: 18px;
+  line-height: 21px;
+  color: #334680;
+}
+
+.is-full-time {
+  @include font-roboto;
+  display: inline-block;
+  margin: 4px 0;
+  padding: 6px 8px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #334680;
+  border: 1px solid #334680;
+  border-radius: 4px;
+}
+
+.icon {
+  font-family: 'Material Icons';
+  color: #b9bdcf;
+  font-size: 15px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.info {
+  color: #b9bdcf;
+  font-size: 12px;
+  vertical-align: middle;
+  margin-right: 28px;
+}
+
+.summary {
+  position: absolute;
+  bottom: 15px;
+  right: 0;
+}

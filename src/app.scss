@@ -8,7 +8,23 @@ body {
   box-sizing: border-box;
 }
 
+body {
+  background-color: #f6f7fb;
+}
+
 .app {
   max-width: 1850px;
+  padding: 0 60px;
   margin: 0 auto;
+}
+
+.app-body {
+  overflow: hidden;
+  min-height: 200px;
+  width: 100%;
+
+  &::after {
+    clear: both;
+  }
+
 }

@@ -8,7 +8,7 @@ import {Results} from './js/results/results';
 ReactDOM.render(
     <React.Fragment>
         <AppHeader></AppHeader>
-        <div>
+        <div className="app-body">
             <Search></Search>
             <Results></Results>
         </div>
