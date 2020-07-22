@@ -1,0 +1,43 @@
+@import './src/scss/mixins';
+
+.apply-panel {
+  float: left;
+  width: 20%;
+  padding-right: 5%;
+}
+
+.subtitle {
+  @include subtitle-mixin;
+}
+
+.link {
+  @include font-popins;
+  font-style: normal;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #1e86ff;
+  vertical-align: middle;
+}
+
+.small-gap {
+  margin: 0 1em;
+}
+
+.gap {
+  margin-right: 15px;
+}
+
+.description {
+  @include font-popins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.icon {
+  font-family: 'Material Icons';
+  vertical-align: middle;
+}

@@ -17,6 +17,45 @@
   display: block;
 }
 
+@mixin subtitle-mixin {
+  @include font-popins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  text-transform: uppercase;
+  padding: 14px 0;
+  color: #b9bdcf;
+}
+
+@mixin badge-mixin {
+  @include font-roboto;
+  display: inline-block;
+  margin: 4px 0;
+  padding: 6px 8px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #334680;
+  border: 1px solid #334680;
+  border-radius: 4px;
+}
+
+@mixin icon-mixin {
+  font-family: 'Material Icons';
+  color: #b9bdcf;
+  font-size: 15px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+@mixin info-mixin {
+  color: #b9bdcf;
+  font-size: 12px;
+  vertical-align: middle;
+  margin-right: 28px;
+}
+
 @mixin animation-mixin($duration, $name, $count) {
   animation-duration: $duration;
   animation-timing-function: ease-in-out;

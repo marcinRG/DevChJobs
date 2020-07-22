@@ -1,5 +1,10 @@
 @import './src/scss/mixins';
 
+.link {
+  display: block;
+  cursor: pointer;
+}
+
 .job-offer-short {
   background: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .05);
@@ -47,32 +52,15 @@
 }
 
 .is-full-time {
-  @include font-roboto;
-  display: inline-block;
-  margin: 4px 0;
-  padding: 6px 8px;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 12px;
-  letter-spacing: 1px;
-  color: #334680;
-  border: 1px solid #334680;
-  border-radius: 4px;
+  @include badge-mixin;
 }
 
 .icon {
-  font-family: 'Material Icons';
-  color: #b9bdcf;
-  font-size: 15px;
-  vertical-align: middle;
-  margin-right: 8px;
+  @include icon-mixin;
 }
 
 .info {
-  color: #b9bdcf;
-  font-size: 12px;
-  vertical-align: middle;
-  margin-right: 28px;
+  @include info-mixin;
 }
 
 .summary {
