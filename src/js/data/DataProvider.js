@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {initData} from './initData';
 import {operations} from './operations';
+import {applicationStates} from './appStates';
 
 export const DataContext = React.createContext(null);
 const GihubJobsAddress = 'https://api.allorigins.win/raw?url=https://jobs.github.com/positions.json';
@@ -10,7 +11,7 @@ export function DataProvider(props) {
 
     const [jobs, setJobs] = useState([]);
     const [showForm, setShowForm] = useState(true);
-    const [appState, setAppState] = useState('loading');
+    const [appState, setAppState] = useState(applicationStates.LOADING);
     const [pagination, setPagination] = useState({
         itemsPerPage: 10,
         currentPage: 1
@@ -45,29 +46,33 @@ export function DataProvider(props) {
         setPagination(newValue);
     }
 
-    const [requestProperties, setRequestProperties] = useState({});
+    const sendRequest = (requestProperties) => {
+        setAppState(applicationStates.LOADING);
+
+        let url = GihubJobsAddress + getURLQuery(requestProperties);
+        console.log(url);
+        fetch(url)
+            .then(data => {
+                data.json().then(result => {
+                    setJobs(result);
+                    setAppState(applicationStates.OK);
+                });
+
+            }).catch(() => {
+            setAppState(applicationStates.ERROR);
+        })
+    }
 
 
     useEffect(() => {
         setJobs(initData);
-        // console.log('begin');
-        //
-        // const reqPropsAsString = getURLQuery(requestProperties);
-        // let url = GihubJobsAddress;
-        // fetch(url)
-        //     .then(data => {
-        //         data.json().then(result => {
-        //             console.log(result);
-        //             setJobs(result);
-        //         });
-        //
-        //     }).catch(() => {
-        //     console.log('error occured');
-        // })
+        setAppState(applicationStates.OK);
+        //sendRequest({});
     }, []);
 
     return (
-        <DataContext.Provider value={{jobs, pagination, showForm, changeShowForm, changePage, getJobs}}>
+        <DataContext.Provider
+            value={{jobs, pagination, showForm, appState, changeShowForm, changePage, getJobs, sendRequest}}>
             {props.children}
         </DataContext.Provider>
     );
@@ -80,9 +85,15 @@ DataProvider.propTypes = {
 
 //https://stackoverflow.com/questions/111529/how-to-create-query-parameters-in-javascript
 function getURLQuery(obj) {
-    return Object.entries(obj)
+    const queryString = Object.entries(obj)
         .map(pair => pair.map(encodeURIComponent).join('='))
         .join('&');
+    if (queryString && queryString.length > 0) {
+        return '?' + queryString;
+    } else {
+        return '';
+    }
+
 }
 
 function sliceResultsArray(itemsArray, settings) {

@@ -29,12 +29,14 @@
   border-radius: 8px;
   height: 140px;
   transition-duration: .4s;
+  opacity: 1;
   border: 1px solid transparent;
   overflow: hidden;
 
   &.hide {
     height: 0;
     border: 0;
+    opacity: 0;
   }
 
 }
