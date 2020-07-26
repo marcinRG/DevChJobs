@@ -1,4 +1,4 @@
-@import './src/scss/mixins';
+@import '../../../scss/mixins';
 
 .details-panel {
   width: 80%;
@@ -13,6 +13,23 @@
   line-height: 150%;
   color: #334680;
   padding: 16px 123px 16px 0;
+
+  p {
+    padding: 20px 0;
+  }
+
+  ul {
+    padding: 20px 10px;
+  }
+
+  li {
+    margin-bottom: 10px;
+  }
+
+  a {
+    color: #1e86ff;
+  }
+
 }
 
 .job-title {
@@ -44,8 +61,15 @@
   width: 42px;
   height: 42px;
   display: inline-block;
-  background-color: #b9bdcf;
   vertical-align: middle;
+  line-height: 42px;
+
+  img {
+    width: 100%;
+    height: auto;
+    vertical-align: middle;
+  }
+
 }
 
 .company-wrapper {

@@ -11,10 +11,13 @@
     "semi": "off",
     "indent": "off",
     "curly": "error",
-    "quotes": [
-      "error",
-      "single"
-    ],
+    //uncomment below
+//    "quotes": [
+//      "error",
+//      "single"
+//    ],
+    "no-irregular-whitespace": "off",
+    //remove above
     "spaced-comment": "off",
     "space-before-function-paren": "off",
     "brace-style": "off",

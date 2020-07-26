@@ -1,4 +1,4 @@
-@import './src/scss/mixins';
+@import '../../../scss/mixins';
 
 .apply-panel {
   float: left;
@@ -35,6 +35,13 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 21px;
+
+  a {
+    text-decoration: none;
+    color: #1e86ff;
+  }
+
+
 }
 
 .icon {

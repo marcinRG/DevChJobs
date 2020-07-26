@@ -1,4 +1,4 @@
-@import './src/scss/mixins';
+@import '../../../scss/mixins';
 
 .link {
   display: block;
@@ -18,9 +18,16 @@
 .img {
   width: 90px;
   height: 90px;
-  background-color: #1e86ff;
   display: inline-block;
   vertical-align: middle;
+  line-height: 90px;
+
+  img {
+    width: 100%;
+    height: auto;
+    vertical-align: middle;
+  }
+
 }
 
 .description {

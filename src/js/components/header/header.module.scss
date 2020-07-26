@@ -1,4 +1,4 @@
-@import './src/scss/mixins';
+@import '../../../scss/mixins';
 
 .app-header {
   padding: 2px;
@@ -21,14 +21,22 @@
 }
 
 .header-search {
-  display: block;
-  background-image: url('../../img/backgroundImg.jpg');
+  @include block-border-box;
+  background-image: url('../../../img/backgroundImg.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   border-radius: 8px;
-  height: 138px;
+  height: 140px;
+  transition-duration: .4s;
   border: 1px solid transparent;
+  overflow: hidden;
+
+  &.hide {
+    height: 0;
+    border: 0;
+  }
+
 }
 
 .input-wrapper {
