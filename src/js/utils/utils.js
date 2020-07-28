@@ -29,3 +29,21 @@ export function validDate(dateAsString) {
     return (dateAsString && !Number.isNaN(Date.parse(dateAsString)));
 }
 
+export function currentPositionFromGeolocation() {
+    return new Promise((resolve, reject) => {
+        if (navigator || navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                const obj = {
+                    lat: position.coords.latitude,
+                    long: position.coords.longitude,
+                };
+                resolve(obj);
+            }, (error) => {
+                reject(error);
+            });
+        } else {
+            reject(new Error('Navigator.geolocation does not exist'));
+        }
+    });
+}
+

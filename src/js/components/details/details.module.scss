@@ -1,8 +1,15 @@
 @import '../../../scss/mixins';
 
 .details-panel {
-  width: 80%;
+  width: 100%;
   float: right;
+
+  @media screen {
+    @media (min-width: 1300px) {
+      width: 80%;
+    }
+  }
+
 }
 
 .description {
@@ -12,14 +19,34 @@
   font-size: 16px;
   line-height: 150%;
   color: #334680;
-  padding: 16px 123px 16px 0;
+
+  @media screen {
+    @media (min-width: 1300px) {
+      padding: 16px 123px 16px 0;
+    }
+  }
+
 
   p {
-    padding: 20px 0;
+    padding: 5px 0;
+
+    @media screen {
+      @media (min-width: 1300px) {
+        padding: 20px 0;
+      }
+    }
+
   }
 
   ul {
-    padding: 20px 10px;
+    padding: 5px;
+
+    @media screen {
+      @media (min-width: 1300px) {
+        padding: 20px 10px;
+      }
+    }
+
   }
 
   li {

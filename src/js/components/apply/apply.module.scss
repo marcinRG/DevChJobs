@@ -2,8 +2,16 @@
 
 .apply-panel {
   float: left;
-  width: 20%;
-  padding-right: 5%;
+  width: 100%;
+  padding-bottom: 20px;
+
+  @media screen {
+    @media (min-width: 1300px) {
+      width: 20%;
+      padding-right: 5%;
+      padding-bottom: 0;
+    }
+  }
 }
 
 .subtitle {

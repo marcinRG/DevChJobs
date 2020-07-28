@@ -42,8 +42,9 @@
 }
 
 .input-wrapper {
+
   margin: 42px auto;
-  width: 75%;
+  width: 90%;
   background: white;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
   border-radius: 4px;
@@ -52,6 +53,11 @@
   padding: 0 5px;
   position: relative;
 
+  @media screen {
+    @media (min-width: 700px) {
+      width: 75%;
+    }
+  }
 }
 
 .search-button {
@@ -61,21 +67,57 @@
   color: white;
   background: #1e86ff;
   border-radius: 4px;
-  width: 20%;
+  width: 30%;
   cursor: pointer;
+
+  @media screen {
+    @media (min-width: 700px) {
+      width: 20%;
+    }
+  }
+
 }
 
 .search-input {
   display: inline-block;
   vertical-align: middle;
-  width: 78%;
+  width: 62%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @media screen {
+    @media (min-width: 700px) {
+      width: 76%;
+    }
+  }
+
+  @media screen {
+    @media (min-width: 1300px) {
+      width: 77%;
+    }
+  }
+
 }
 
 .icon {
   color: #b9bdcf;
   display: inline-block;
-  width: 2%;
+  width: 8%;
   text-align: center;
   font-family: 'Material Icons';
   vertical-align: middle;
+
+  @media screen {
+    @media (min-width: 700px) {
+      width: 4%;
+    }
+  }
+
+  @media screen {
+    @media (min-width: 1300px) {
+      width: 3%;
+    }
+  }
+
 }

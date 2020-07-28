@@ -55,13 +55,17 @@ module.exports = merge(common, {
             },
             {
                 test: /\.scss$/,
-                use: [{ loader: MiniCssExtractPlugin.loader },
-                    { loader: 'css-loader' }, {
+                use: [
+                    {loader: MiniCssExtractPlugin.loader},
+                    {loader: 'css-loader', options: {
+                            modules: true,
+                            camelCase: true,
+                        }}, {
                         loader: 'postcss-loader',
                         options: {
                             plugins: () => [AutoPrefixer()]
                         }
-                    }, { loader: 'sass-loader' }]
+                    }, {loader: 'sass-loader'}]
             },
         ],
     },

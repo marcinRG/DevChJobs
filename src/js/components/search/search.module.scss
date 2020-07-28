@@ -2,8 +2,16 @@
 
 .search-panel {
   float: left;
-  width: 30%;
-  padding: 32px 16px;
+  padding: 32px 0;
+  width: 100%;
+
+  @media screen {
+    @media (min-width: 1300px) {
+      width: 30%;
+      padding: 32px 16px;
+    }
+  }
+
 }
 
 .search-input {
