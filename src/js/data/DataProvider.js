@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
-import {initData} from './initData';
 import {operations} from './operations';
 import {applicationStates} from './appStates';
 import {currentPositionFromGeolocation} from '../utils/utils';
 
 export const DataContext = React.createContext(null);
-const GihubJobsAddress = 'https://api.allorigins.win/raw?url=https://jobs.github.com/positions.json';
+const githubJobsAddress = 'https://jobs.github.com/positions.json';
 
 export function DataProvider(props) {
 
@@ -49,7 +48,7 @@ export function DataProvider(props) {
 
     const sendRequest = (requestProperties) => {
         setAppState(applicationStates.LOADING);
-        let url = GihubJobsAddress + getURLQuery(requestProperties);
+        let url = githubJobsAddress + getURLQuery(requestProperties);
         fetch(url)
             .then(data => {
                 data.json().then(result => {
@@ -63,13 +62,11 @@ export function DataProvider(props) {
     }
 
     useEffect(() => {
-        setJobs(initData);
-        setAppState(applicationStates.OK);
-        // currentPositionFromGeolocation().then(obj => {
-        //     sendRequest({...obj});
-        // }).catch(()=>{
-        //     sendRequest({});
-        // });
+        currentPositionFromGeolocation().then(obj => {
+            sendRequest({...obj});
+        }).catch(()=>{
+            sendRequest({});
+        });
     }, []);
 
     return (
