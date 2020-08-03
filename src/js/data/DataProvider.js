@@ -5,6 +5,7 @@ import {applicationStates} from './appStates';
 import {currentPositionFromGeolocation} from '../utils/utils';
 
 export const DataContext = React.createContext(null);
+const corsBypass = 'https://api.allorigins.win/get?url=';
 const githubJobsAddress = 'https://jobs.github.com/positions.json';
 
 export function DataProvider(props) {
@@ -16,6 +17,11 @@ export function DataProvider(props) {
         itemsPerPage: 10,
         currentPage: 1
     });
+
+    const setPageToFirst = () => {
+        const newState = {...pagination, currentPage: 1};
+        setPagination(newState);
+    }
 
     const getJobs = () => {
         return sliceResultsArray(jobs, pagination);
@@ -32,7 +38,7 @@ export function DataProvider(props) {
                 newValue.currentPage = pagination.currentPage + 1;
             }
             if (pagination.currentPage === Math.ceil(jobs.length / pagination.itemsPerPage)) {
-                console.log('load more items');
+                //console.log('load more items');
             }
         }
         if (value === operations.PREVIOUS) {
@@ -48,14 +54,17 @@ export function DataProvider(props) {
 
     const sendRequest = (requestProperties) => {
         setAppState(applicationStates.LOADING);
-        let url = githubJobsAddress + getURLQuery(requestProperties);
+        let url = corsBypass + encodeURIComponent(githubJobsAddress + getURLQuery(requestProperties));
         fetch(url)
-            .then(data => {
-                data.json().then(result => {
-                    setJobs(result);
-                    setAppState(applicationStates.OK);
-                });
-
+            .then(response => {
+                if (response.ok) {
+                    response.json().then(data => {
+                        const dataSet = JSON.parse(data.contents);
+                        setJobs(dataSet);
+                        setPageToFirst();
+                        setAppState(applicationStates.OK);
+                    });
+                }
             }).catch(() => {
             setAppState(applicationStates.ERROR);
         })
@@ -64,7 +73,7 @@ export function DataProvider(props) {
     useEffect(() => {
         currentPositionFromGeolocation().then(obj => {
             sendRequest({...obj});
-        }).catch(()=>{
+        }).catch(() => {
             sendRequest({});
         });
     }, []);
@@ -92,7 +101,6 @@ function getURLQuery(obj) {
     } else {
         return '';
     }
-
 }
 
 function sliceResultsArray(itemsArray, settings) {

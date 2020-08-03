@@ -10,6 +10,12 @@ export function Search() {
     const [location, setLocation] = useState('');
     const [description, setDescription] = useState('');
 
+    const resetState = () => {
+        setFullTime(false);
+        setLocation('');
+        setDescription('');
+    }
+
     const changeLocation = (event) => {
         setLocation(event.target.value);
     }
@@ -23,11 +29,13 @@ export function Search() {
     };
 
     const searchAction = () => {
-        dataContext.sendRequest({
+        const reqPrams = {
             full_time: fullTime.toString(),
             location: location,
             description: description,
-        });
+        };
+        resetState();
+        dataContext.sendRequest({...reqPrams});
     }
 
     return (
@@ -37,13 +45,13 @@ export function Search() {
             <div className={scss.searchInput}>
                 <span className={scss.icon}>public</span>
                 <input className={scss.input} type="text" placeholder="City, state, zip code or country"
-                value={location} onChange={changeLocation}/>
+                       value={location} onChange={changeLocation}/>
             </div>
             <h3 className={scss.subtitle}>Description</h3>
             <div className={scss.searchInput}>
                 <span className={scss.icon}>work_outline</span>
                 <input className={scss.input} type="text" placeholder="Title, companies, expertise or benefits"
-                value={description} onChange={changeDescription}/>
+                       value={description} onChange={changeDescription}/>
             </div>
             <div>
                 <button className={scss.button} onClick={searchAction}>Search</button>

@@ -14,6 +14,7 @@ export function AppHeader() {
     const buttonClick = (event) => {
         event.preventDefault();
         dataContext.sendRequest({description: description});
+        setDescription('');
     }
 
 

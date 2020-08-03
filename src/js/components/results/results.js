@@ -10,6 +10,9 @@ import img from './../../../img/loading.gif';
 export function Results() {
 
     const dataContext = useContext(DataContext);
+    const clickRefresh = () => {
+        dataContext.sendRequest({});
+    }
 
     return (
         <div className={scss.searchResults}>
@@ -18,7 +21,7 @@ export function Results() {
                 {dataContext.getJobs().map(job =>
                     <JobShort key={job.id} {...job} />
                 )}
-                <PaginationControl></PaginationControl>
+                {dataContext.jobs.length > 0 && <PaginationControl/>}
             </React.Fragment>
             }
             {dataContext.appState === applicationStates.LOADING &&
@@ -33,8 +36,9 @@ export function Results() {
             <React.Fragment>
                 <div className={scss.wrapper}>
                     <p><span className={scss.icon}>error</span>Error ....</p>
-                    <Link to={'/'} className={scss.link}><span className={scss.icon}>refresh</span><span
-                        className={scss.txt}>refresh</span></Link>
+                    <button className={scss.link} onClick={clickRefresh()}><span
+                        className={scss.icon}>refresh</span><span
+                        className={scss.txt}>refresh</span></button>
                 </div>
             </React.Fragment>
             }
